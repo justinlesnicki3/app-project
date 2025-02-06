@@ -16,9 +16,22 @@ const SignUp = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const submit = () => {
+  const submit = async () => {
+    if(!form.username || !form.email || !form.password) {
+      Alert.alert('Error', 'Please fill in all the fields')
+    }
 
-    createUser();
+    setIsSubmitting(true);
+
+    try {
+      const result = await createUser(form.email, form.password, form.username)
+      // set it to global state...
+      router.replace('/home') 
+    } catch (error) {
+      Alert.alert('Error', error.message)
+    } finally {
+      setIsSubmitting(false)
+    }
 
   }
 
@@ -56,7 +69,7 @@ const SignUp = () => {
             />
             <View style={{alignItems: 'center', marginTop: 28}}>
               <CustomButton 
-              title="Sign In"
+              title="Sign Up"
               handlePress={submit}
               containerStyles="mt-7"
               isLoading={isSubmitting}
