@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, ScrollView, Image } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, Image, Alert } from 'react-native'
 import React, {useState} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 import { images } from '../../constants/constants';
 import FormField from '../../components/FormField';
 import CustomButton from '../../components/CustomButton'
